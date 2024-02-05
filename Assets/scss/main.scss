@@ -1,0 +1,50 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/containers";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "./variables";
+@import "./animatons";
+
+//NAV SECTION - START
+.navbar-collapse {
+  flex-grow: 0;
+}
+@media (max-width: 992px) {
+  .nav-link {
+    font-size: 20px;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+@media (min-width: 992px) {
+  .nav-link {
+    position: relative;
+    margin-left: 25px;
+    padding-left: 0;
+    padding-right: 0;
+
+    &::after {
+      width: 0%;
+      height: 5px;
+      position: absolute;
+      left: 10%;
+      bottom: -5%;
+      background: $primary-color;
+      content: "";
+      border-radius: 20px;
+    }
+    &:hover {
+      &::after {
+        animation: nav-anim 0.3s forwards;
+      }
+    }
+  }
+}
+//NAV SECTION - END
