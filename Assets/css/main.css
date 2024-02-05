@@ -13708,6 +13708,24 @@ progress {
     width: 80%;
   }
 }
+/* Keyframes for typing animation */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 63%;
+  }
+}
+/* Blinking cursor animation */
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
 * {
   font-family: "Poppins", sans-serif;
 }
@@ -13753,8 +13771,91 @@ nav {
     animation: nav-anim 0.3s forwards;
   }
 }
-.header-box-1 {
-  height: 90vh;
+@media (max-width: 992px) {
+  .header-box-1 {
+    padding-left: 20px;
+    height: 100%;
+    order: 2;
+    padding-top: 50px;
+  }
+  .header-box-1 .box-3 {
+    width: 75%;
+  }
+}
+@media (min-width: 992px) {
+  .header-box-1 {
+    padding-left: 150px;
+    height: 90vh;
+    padding-top: 80px;
+  }
+  .header-box-1 .box-3 {
+    width: 50%;
+  }
+}
+header {
+  align-items: center;
+}
+
+.header-box-1 .box-1 .header-text-1 {
+  font-size: 25px;
+}
+.header-box-1 .box-1 .header-text-2 {
+  display: inline-block;
+  color: #5fba75;
+  font-size: 50px;
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+.header-box-1 .box-1 .header-text-3 {
+  font-size: 20px;
+}
+.header-box-1 .box-2 {
+  text-align: justify;
+}
+.header-box-1 .box-3 {
+  display: flex;
+  justify-content: space-between;
+}
+.header-box-1 .box-3 .header-icon {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border: 2px solid #5fba75;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 25px;
+  color: #5fba75;
+}
+.header-box-1 .box-4 {
+  margin-top: 30px;
+}
+.header-box-1 .box-4 .header-btn {
+  width: 150px;
+  height: 50px;
+  transition: all 0.2s linear 0s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.header-box-1 .box-4 .header-btn:hover .text {
+  transform: translateX(-150%);
+}
+.header-box-1 .box-4 .header-btn:hover .icon {
+  transform: translateX(-300%);
+  display: block;
+}
+.header-box-1 .box-4 .header-btn .text {
+  transition: 0.5s;
+  display: block;
+}
+.header-box-1 .box-4 .header-btn .icon {
+  transition: 0.5s;
+  display: none;
 }
 
 /*# sourceMappingURL=main.css.map */
