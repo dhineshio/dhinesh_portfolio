@@ -13701,161 +13701,247 @@ progress {
   }
 }
 @keyframes nav-anim {
-  from {
+  0% {
     width: 0;
   }
-  to {
-    width: 80%;
+  100% {
+    width: 100%;
   }
 }
-/* Keyframes for typing animation */
+@keyframes rotate-text-up {
+  0% {
+    transform: translate3d(0, 80px, 0);
+    opacity: 0;
+  }
+  20%, 80% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -40px, 0);
+    opacity: 0;
+  }
+}
+@keyframes fade-text-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 80px, 0);
+  }
+  50%, 100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
 @keyframes typing {
   from {
     width: 0;
   }
   to {
-    width: 63%;
+    width: 41%;
   }
 }
-/* Blinking cursor animation */
-@keyframes blink-caret {
-  from, to {
-    border-color: transparent;
-  }
+@keyframes caret {
   50% {
-    border-color: orange;
+    color: transparent;
   }
 }
 * {
   font-family: "Poppins", sans-serif;
 }
 
-nav {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+hr {
+  border-width: 2px;
+  margin: 0;
 }
 
-.navbar-toggler {
-  border: none;
-}
-.navbar-toggler:focus {
-  box-shadow: none;
+/*=============================================
+=             NAVBAR SECTION _ START           =
+=============================================*/
+.navbar {
+  padding: 30px 10px 0px 0px;
 }
 
 .navbar-collapse {
   flex-grow: 0;
 }
 
-@media (max-width: 992px) {
-  .nav-link:hover {
-    color: #5fba75;
-  }
+.navbar-toggler {
+  outline: none;
+  border: none;
 }
-@media (min-width: 992px) {
-  .nav-link {
-    position: relative;
-    margin-left: 25px;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .nav-link::after {
-    width: 0%;
-    height: 5px;
-    position: absolute;
-    left: 10%;
-    bottom: -5%;
-    background: #5fba75;
-    content: "";
-    border-radius: 20px;
-  }
-  .nav-link:hover::after {
-    animation: nav-anim 0.3s forwards;
-  }
-}
-@media (max-width: 992px) {
-  .header-box-1 {
-    padding-left: 20px;
-    height: 100%;
-    order: 2;
-    padding-top: 50px;
-  }
-  .header-box-1 .box-3 {
-    width: 75%;
-  }
-}
-@media (min-width: 992px) {
-  .header-box-1 {
-    padding-left: 150px;
-    height: 90vh;
-    padding-top: 80px;
-  }
-  .header-box-1 .box-3 {
-    width: 50%;
-  }
-}
-header {
-  align-items: center;
+.navbar-toggler:focus, .navbar-toggler:active {
+  outline: none;
+  box-shadow: none;
 }
 
+.nav-link {
+  margin-bottom: 5px;
+  transition: all 0.3s;
+}
+.nav-link:hover {
+  color: #5fba75;
+}
+
+@media (min-width: 992px) {
+  .nav-link {
+    margin-left: 30px;
+    position: relative;
+  }
+  .nav-link:hover::after {
+    animation: nav-anim 0.5s forwards;
+  }
+  .nav-link:hover {
+    color: var(--bs-gray-dark);
+  }
+  .nav-link::after {
+    content: "";
+    width: 0%;
+    height: 3px;
+    background: #5fba75;
+    position: absolute;
+    left: 0;
+    bottom: -5%;
+    transform: scaleX(-0.85);
+    border-radius: 20px;
+  }
+}
+/*=====  End of // HEADER SECTION _ END  ======*/
+/*=============================================
+=      JAVA DEVELOPER ANIMATION - START          =
+=============================================*/
+.rotatingText-content {
+  width: 200px;
+}
+.rotatingText-content .rotatingText-adjective {
+  font-size: 20px;
+}
+
+@media (min-width: 992px) {
+  .rotatingText-content {
+    width: 300px;
+  }
+  .rotatingText-content .rotatingText-adjective {
+    display: inline-block;
+    font-size: 30px;
+  }
+}
+.header-text-box {
+  display: flex;
+}
+.header-text-box span {
+  align-self: baseline;
+}
+
+.rotatingText-content {
+  position: relative;
+}
+.rotatingText-content .rotatingText-adjective {
+  color: #198754;
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+}
+.rotatingText-content .rotatingText-adjective:nth-of-type(1) {
+  animation: rotate-text-up 1.5s 0.75s;
+  animation-timing-function: ease; /* Timing function */
+}
+.rotatingText-content .rotatingText-adjective:nth-of-type(2) {
+  animation: rotate-text-up 1.5s 2s;
+  animation-timing-function: ease; /* Timing function */
+}
+.rotatingText-content .rotatingText-adjective:nth-of-type(3) {
+  animation: fade-text-in 1.5s 3.25s forwards;
+  animation-timing-function: ease; /* Timing function */
+  animation-fill-mode: forwards; /* Retain end state of each animation */
+}
+
+/*=====  End of JAVA DEVELOPER ANIMATION - END  ======*/
+/*=============================================
+=             HEADER SECTION _ START            =
+=============================================*/
+/*----------  HEADER-BOX 1  ----------*/
+.box-3 {
+  display: flex;
+}
+.box-3 .header-icon {
+  color: #198754;
+}
+
+.header-box-1 {
+  padding-top: 20px;
+}
 .header-box-1 .box-1 .header-text-1 {
-  font-size: 25px;
+  font-size: 20px;
+  margin-bottom: 0;
 }
 .header-box-1 .box-1 .header-text-2 {
-  display: inline-block;
-  color: #5fba75;
-  font-size: 50px;
-  overflow: hidden;
-  border-right: 0.15em solid orange;
-  white-space: nowrap;
-  margin: 0 auto;
-  animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+  font-size: 40px;
+  margin-bottom: 0;
 }
 .header-box-1 .box-1 .header-text-3 {
   font-size: 20px;
 }
-.header-box-1 .box-2 {
+.header-box-1 .box-2 p {
   text-align: justify;
 }
 .header-box-1 .box-3 {
+  flex-direction: column;
+}
+.header-box-1 .box-3 .box-3-1 {
+  width: 60%;
   display: flex;
-  justify-content: space-between;
 }
-.header-box-1 .box-3 .header-icon {
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  border: 2px solid #5fba75;
-  border-radius: 50%;
-  padding: 5px;
-  font-size: 25px;
-  color: #5fba75;
+.header-box-1 .box-3 .box-3-1 .header-icon {
+  font-size: 40px;
+  margin-right: 60px;
+  margin-bottom: 30px;
 }
-.header-box-1 .box-4 {
-  margin-top: 30px;
+@media (min-width: 992px) {
+  header {
+    height: 85vh;
+  }
+  header .header-box-1 {
+    height: 100%;
+    padding-top: 50px;
+  }
+  header .header-box-1 .box-1 .header-text-1 {
+    font-size: 30px;
+    margin-bottom: 0;
+  }
+  header .header-box-1 .box-1 .header-text-2 {
+    font-size: 50px;
+    margin-bottom: 0;
+  }
+  header .header-box-1 .box-1 .header-text-3 {
+    font-size: 30px;
+  }
+  header .header-box-1 .box-1 .header-text-3 span {
+    color: #198754;
+  }
+  header .header-box-1 .box-2 p {
+    text-align: start;
+  }
+  header .header-box-1 .box-3 {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  header .header-box-1 .box-3 .box-3-1 .header-icon {
+    font-size: 30px;
+    margin-right: 40px;
+  }
 }
-.header-box-1 .box-4 .header-btn {
-  width: 150px;
-  height: 50px;
-  transition: all 0.2s linear 0s;
-  position: relative;
+/*----------  HEADER-BOX 2  ----------*/
+.header-box-2 {
+  background-color: aliceblue;
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
-.header-box-1 .box-4 .header-btn:hover .text {
-  transform: translateX(-150%);
+.header-box-2 .img-container .img-box {
+  background: #5fba75;
+  width: fit-content;
+  transform: rotate(-40deg);
 }
-.header-box-1 .box-4 .header-btn:hover .icon {
-  transform: translateX(-300%);
-  display: block;
-}
-.header-box-1 .box-4 .header-btn .text {
-  transition: 0.5s;
-  display: block;
-}
-.header-box-1 .box-4 .header-btn .icon {
-  transition: 0.5s;
-  display: none;
-}
+
+/*=====  End of HEADER SECTION _ END  ======*/
 
 /*# sourceMappingURL=main.css.map */

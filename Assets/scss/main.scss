@@ -15,146 +15,216 @@
 * {
   font-family: "Poppins", sans-serif;
 }
-
-//NAV SECTION - START
-nav {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+hr {
+  border-width: 2px;
+  margin: 0;
 }
-.navbar-toggler {
-  border: none;
-  &:focus {
-    box-shadow: none;
-  }
+/*=============================================
+=             NAVBAR SECTION _ START           =
+=============================================*/
+.navbar {
+  padding: 30px 10px 0px 0px;
 }
 .navbar-collapse {
   flex-grow: 0;
 }
-@media (max-width: 992px) {
+@include media-breakpoint-up(xs) {
+  .navbar-toggler {
+    outline: none;
+    border: none;
+    &:focus,
+    &:active {
+      outline: none;
+      box-shadow: none;
+    }
+  }
   .nav-link {
+    margin-bottom: 5px;
+    transition: all 0.3s;
     &:hover {
+      // font-weight: bold;
       color: $primary-color;
     }
   }
 }
-@media (min-width: 992px) {
+@include media-breakpoint-up(lg) {
+  // 992 above
   .nav-link {
+    margin-left: 30px;
     position: relative;
-    margin-left: 25px;
-    padding-left: 0;
-    padding-right: 0;
-
+    &:hover::after {
+      animation: nav-anim 0.5s forwards;
+    }
+    &:hover {
+      color: var(--bs-gray-dark);
+    }
     &::after {
-      width: 0%;
-      height: 5px;
-      position: absolute;
-      left: 10%;
-      bottom: -5%;
-      background: $primary-color;
       content: "";
+      width: 0%;
+      height: 3px;
+      background: $primary-color;
+      position: absolute;
+      left: 0;
+      bottom: -5%;
+      transform: scaleX(-0.85);
       border-radius: 20px;
     }
-    &:hover {
-      &::after {
-        animation: nav-anim 0.3s forwards;
-      }
-    }
   }
 }
-//NAV SECTION - END
-
-//HEADER SECTION
-
-@media (max-width: 992px) {
-  .header-box-1 {
-    padding-left: 20px;
-    height: 100%;
-    order: 2;
-    padding-top: 50px;
-
-    .box-3 {
-      width: 75%;
-    }
-  }
-}
-@media (min-width: 992px) {
-  .header-box-1 {
-    padding-left: 150px;
-    height: 90vh;
-    padding-top: 80px;
-    .box-3 {
-      width: 50%;
-    }
-  }
-}
-header {
-  align-items: center;
-}
-.header-box-1 {
-  .box-1 {
-    .header-text-1 {
-      font-size: 25px;
-    }
-    .header-text-2 {
-      display: inline-block;
-      color: $primary-color;
-      font-size: 50px;
-      overflow: hidden;
-      border-right: 0.15em solid orange;
-      white-space: nowrap;
-      margin: 0 auto;
-      animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
-    }
-    .header-text-3 {
+/*=====  End of // HEADER SECTION _ END  ======*/
+/*=============================================
+=      JAVA DEVELOPER ANIMATION - START          =
+=============================================*/
+@include media-breakpoint-up(xs) {
+  .rotatingText-content {
+    width: 200px;
+    .rotatingText-adjective {
       font-size: 20px;
     }
   }
-  .box-2 {
-    text-align: justify;
-  }
-  .box-3 {
-    display: flex;
-    // background: red;
-    justify-content: space-between;
-    .header-icon {
-      width: 50px;
-      height: 50px;
-      text-align: center;
-      border: 2px solid $primary-color;
-      border-radius: 50%;
-      padding: 5px;
-      font-size: 25px;
-      color: $primary-color;
+}
+@include media-breakpoint-up(lg) {
+  .rotatingText-content {
+    width: 300px;
+    .rotatingText-adjective {
+      display: inline-block;
+      font-size: 30px;
     }
   }
-  .box-4 {
-    margin-top: 30px;
-    .header-btn {
-      width: 150px;
-      height: 50px;
-      transition: all 0.2s linear 0s;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+}
+.header-text-box {
+  display: flex;
+  span {
+    align-self: baseline;
+  }
+}
+.rotatingText-content {
+  position: relative;
+  // width: 300px;
+  .rotatingText-adjective {
+    color: $green;
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    &:nth-of-type(1) {
+      animation: rotate-text-up 1.5s 0.75s;
+      animation-timing-function: ease; /* Timing function */
+    }
+    &:nth-of-type(2) {
+      animation: rotate-text-up 1.5s 2s;
+      animation-timing-function: ease; /* Timing function */
+    }
+    &:nth-of-type(3) {
+      animation: fade-text-in 1.5s 3.25s forwards;
+      animation-timing-function: ease; /* Timing function */
+      animation-fill-mode: forwards; /* Retain end state of each animation */
+    }
+  }
+}
+/*=====  End of JAVA DEVELOPER ANIMATION - END  ======*/
+/*=============================================
+=             HEADER SECTION _ START            =
+=============================================*/
 
-      &:hover .text {
-        transform: translateX(-150%);
+/*----------  HEADER-BOX 1  ----------*/
+.box-3 {
+  display: flex;
+  .header-icon {
+    color: $success;
+  }
+}
+@include media-breakpoint-up(xs) {
+  .header-box-1 {
+    padding-top: 20px;
+    .box-1 {
+      .header-text-1 {
+        font-size: 20px;
+        margin-bottom: 0;
       }
-      &:hover .icon {
-        transform: translateX(-300%);
-        display: block;
+      .header-text-2 {
+        font-size: 40px;
+        margin-bottom: 0;
       }
-
-      .text {
-        transition: 0.5s;
-        display: block;
+      .header-text-3 {
+        font-size: 20px;
       }
-
-      .icon {
-        transition: 0.5s;
-        display: none;
+    }
+    .box-2 {
+      p {
+        text-align: justify;
+      }
+    }
+    .box-3 {
+      flex-direction: column;
+      .box-3-1 {
+        width: 60%;
+        display: flex;
+        .header-icon {
+          font-size: 40px;
+          margin-right: 60px;
+          margin-bottom: 30px;
+        }
+        .header-btn {
+        }
       }
     }
   }
 }
+@include media-breakpoint-up(lg) {
+  header {
+    height: 85vh;
+    .header-box-1 {
+      height: 100%;
+      padding-top: 50px;
+      .box-1 {
+        .header-text-1 {
+          font-size: 30px;
+          margin-bottom: 0;
+        }
+        .header-text-2 {
+          font-size: 50px;
+          margin-bottom: 0;
+        }
+        .header-text-3 {
+          font-size: 30px;
+          span {
+            color: $success;
+          }
+        }
+      }
+      .box-2 {
+        p {
+          text-align: start;
+        }
+      }
+      .box-3 {
+        flex-direction: row;
+        justify-content: space-between;
+        .box-3-1 {
+          .header-icon {
+            font-size: 30px;
+            margin-right: 40px;
+          }
+        }
+      }
+    }
+  }
+}
+/*----------  HEADER-BOX 2  ----------*/
+@include media-breakpoint-up(xs) {
+}
+@include media-breakpoint-up(lg) {
+}
+.header-box-2 {
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+  .img-container {
+    .img-box {
+      background: $primary-color;
+      width: fit-content;
+      transform: rotate(-40deg);
+    }
+  }
+}
+/*=====  End of HEADER SECTION _ END  ======*/
