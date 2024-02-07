@@ -13751,7 +13751,7 @@ progress {
 
 hr {
   border-width: 2px;
-  margin: 0;
+  margin: 10px 0px 0px 0px;
 }
 
 /*=============================================
@@ -13868,6 +13868,7 @@ hr {
 }
 
 .header-box-1 {
+  order: 1;
   padding-top: 20px;
 }
 .header-box-1 .box-1 .header-text-1 {
@@ -13901,6 +13902,7 @@ hr {
     height: 85vh;
   }
   header .header-box-1 {
+    order: 0;
     height: 100%;
     padding-top: 50px;
   }
@@ -13931,15 +13933,57 @@ hr {
   }
 }
 /*----------  HEADER-BOX 2  ----------*/
+.img-container {
+  height: 300px;
+  width: 300px;
+  overflow: hidden;
+}
+.img-container .img-box-1 {
+  top: 36%;
+  left: 46%;
+}
+.img-container .img-box-1 img {
+  width: 120px;
+}
+.img-container .img-box-2 {
+  left: 25.5%;
+  top: 17%;
+}
+.img-container .img-box-2 img {
+  width: 80px;
+}
+.img-container .img-box-3 {
+  left: 11%;
+  top: 43%;
+}
+.img-container .img-box-3 img {
+  width: 80px;
+}
+
+@media (min-width: 992px) {
+  .img-container .img-box-1 img {
+    width: 150px;
+  }
+  .img-container .img-box-2 img {
+    width: 100px;
+  }
+  .img-container .img-box-3 img {
+    width: 100px;
+  }
+}
 .header-box-2 {
-  background-color: aliceblue;
   display: flex;
+  align-items: center;
   justify-content: center;
+}
+.header-box-2 .img-container {
+  position: relative;
 }
 .header-box-2 .img-container .img-box {
   background: #5fba75;
   width: fit-content;
-  transform: rotate(-40deg);
+  transform: rotate(-30deg);
+  position: absolute;
 }
 
 /*=====  End of HEADER SECTION _ END  ======*/
