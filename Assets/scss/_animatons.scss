@@ -8,7 +8,9 @@
     width: 100%;
   }
 }
-
+/*=============================================
+=            JAVA DEVELOPER ANIMATION            =
+=============================================*/
 @keyframes rotate-text-up {
   0% {
     transform: translate3d(0, 80px, 0);
@@ -37,6 +39,7 @@
     transform: translate3d(0, 0, 0);
   }
 }
+/*=====  End of JAVA DEVELOPER ANIMATION  ======*/
 // Animation
 @keyframes typing {
   from {
@@ -51,3 +54,28 @@
     color: transparent;
   }
 }
+
+/*=============================================
+=            DOWNLOAD BTN ANIMATION            =
+=============================================*/
+@keyframes left-move {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-350%);
+  }
+}
+@keyframes right-move {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+/*=====  End of DOWNLOAD BTN ANIMATIOn  ======*/
