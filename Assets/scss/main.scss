@@ -23,13 +23,20 @@ hr {
 =             NAVBAR SECTION _ START           =
 =============================================*/
 .navbar {
-  padding: 30px 10px 0px 0px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba($white, $alpha: 1);
+  padding: 20px 50px 10px 50px;
+  transition: all 0.5s;
 }
 .navbar-collapse {
   flex-grow: 0;
 }
-
 @include media-breakpoint-up(xs) {
+  .navbar {
+    padding: 20px 0px;
+  }
   .navbar-toggler {
     outline: none;
     border: none;
@@ -50,6 +57,9 @@ hr {
 }
 @include media-breakpoint-up(lg) {
   // 992 above
+  .navbar {
+    padding: 20px 50px 10px 50px;
+  }
   .nav-link {
     margin-left: 30px;
     position: relative;
@@ -362,5 +372,91 @@ hr {
 .about-section {
   height: 100vh;
 }
+
+/*=============================================
+=            WAVE ANIMATION AND BACKGROUND            =
+=============================================*/
+.about-section-bg {
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(
+    315deg,
+    rgba(47, 129, 167, 1) 0%,
+    rgba(48, 157, 78, 1) 100%
+  );
+  background-attachment: fixed;
+}
+.wave {
+  background: rgb(255 255 255 / 25%);
+  border-radius: 1000% 1000% 0 0;
+  position: absolute;
+  width: 200%;
+  height: 10em;
+  animation: wave 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  &:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+  }
+  &:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+  }
+}
+.about-section {
+  position: relative;
+}
+/*----------  TITLE   ----------*/
+.title-box {
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 100px;
+
+  .title {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 30px;
+    // background: red;
+    color: white;
+    perspective: 1000px;
+    span {
+      cursor: pointer;
+      display: inline-block;
+      font-size: 30px;
+      user-select: none;
+      line-height: 0.8;
+      color: white;
+
+      &:nth-child(1).active {
+        animation: balance 1.5s ease-out;
+        transform-origin: bottom left;
+      }
+      &:nth-child(2).active {
+        animation: shrinkjump 1s ease-in-out forwards;
+        transform-origin: bottom center;
+      }
+      &:nth-child(3).active {
+        animation: falling 2s ease-out;
+        transform-origin: bottom center;
+      }
+      &:nth-child(4).active {
+        animation: rotate 1s ease-out infinite;
+      }
+      &:nth-child(5).active {
+        animation: toplong 1.5s linear;
+      }
+    }
+  }
+}
+
+/*=====  End of WAVE ANIMATION AND BACKGROUND  ======*/
 
 /*=====  End of ABOUT SECTION  ======*/

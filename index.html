@@ -17,7 +17,7 @@
   <body>
     <main class="container-fluid main-container">
       <!-- NAV SECTION -->
-      <nav class="navbar navbar-expand-lg container">
+      <nav class="navbar navbar-expand-lg container-fluid">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"
             ><img src="./Assets/imgs/logo.png" width="50px" class="img-fluid"
@@ -139,74 +139,141 @@
       </div>
       <div class="container-fluid about-section-bg">
         <section class="about-section">
-          <div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
+          <div class="title-box">
+            <div class="title">
+              <span>A</span>
+              <span>B</span>
+              <span>O</span>
+              <span>U</span>
+              <span>T</span>
+            </div>
           </div>
-        </section>
           <style>
-            .about-section-bg{
-              overflow: hidden;
-              position: relative;
-              /* background: linear-gradient(
-                315deg,
-                rgba(101, 0, 94, 1) 3%,
-                rgba(60, 132, 206, 1) 38%,
-                rgba(48, 238, 226, 1) 68%,
-                rgba(255, 25, 25, 1) 98%
-              ); */
-              background: linear-gradient(315deg, rgba(47,129,167,1) 0%, rgba(48,157,78,1) 100%);
-              background-attachment: fixed;
+            .title {
+              perspective: 1000px;
             }
-            .wave {
-              background: rgb(255 255 255 / 25%);
-              border-radius: 1000% 1000% 0 0;
-              position: absolute;
-              width: 200%;
-              height: 15em;
-              animation: wave 10s -3s linear infinite;
-              transform: translate3d(0, 0, 0);
-              opacity: 0.8;
-              bottom: 0;
-              left: 0;
-              z-index: 1;
+            .title span {
+              cursor: pointer;
+              display: inline-block;
+              font-size: 30px;
+              user-select: none;
+              line-height: 0.8;
+              color: white;
             }
-
-            .wave:nth-of-type(2) {
-              bottom: -1.25em;
-              animation: wave 18s linear reverse infinite;
-              opacity: 0.8;
+            .title span:nth-child(1).active {
+              animation: balance 1.5s ease-out;
+              transform-origin: bottom left;
             }
-
-            .wave:nth-of-type(3) {
-              bottom: -2.5em;
-              animation: wave 20s -1s reverse infinite;
-              opacity: 0.9;
-            }
-
-            @keyframes wave {
-              2% {
-                transform: translateX(1);
+            @keyframes balance {
+              0%,
+              100% {
+                transform: rotate(0deg);
               }
 
-              25% {
-                transform: translateX(-25%);
+              30%,
+              60% {
+                transform: rotate(-45deg);
+              }
+            }
+            .title span:nth-child(2).active {
+              animation: shrinkjump 1s ease-in-out forwards;
+              transform-origin: bottom center;
+            }
+            @keyframes shrinkjump {
+              10%,
+              35% {
+                transform: scale(2, 0.2) translate(0, 0);
               }
 
+              45%,
               50% {
-                transform: translateX(-50%);
+                transform: scale(1) translate(0, -150px);
               }
 
-              75% {
-                transform: translateX(-25%);
+              80% {
+                transform: scale(1) translate(0, 0);
+              }
+            }
+            .title span:nth-child(3).active {
+              animation: falling 2s ease-out;
+              transform-origin: bottom center;
+            }
+            @keyframes falling {
+              12% {
+                transform: rotateX(240deg);
+              }
+
+              24% {
+                transform: rotateX(150deg);
+              }
+
+              36% {
+                transform: rotateX(200deg);
+              }
+
+              48% {
+                transform: rotateX(175deg);
+              }
+
+              60%,
+              85% {
+                transform: rotateX(180deg);
               }
 
               100% {
-                transform: translateX(1);
+                transform: rotateX(0deg);
+              }
+            }
+            .title span:nth-child(4).active {
+              animation: rotate 1s ease-out infinite;
+            }
+            @keyframes rotate {
+              20%,
+              80% {
+                transform: rotateY(180deg);
+              }
+
+              100% {
+                transform: rotateY(360deg);
+              }
+            }
+            .title span:nth-child(5).active {
+              animation: toplong 1.5s linear;
+            }
+            @keyframes toplong {
+              10%,
+              40% {
+                transform: translateY(-48vh) scaleY(1);
+              }
+
+              90% {
+                transform: translateY(-48vh) scaleY(4);
               }
             }
           </style>
+          <script>
+            const spans = document.querySelectorAll(".title span");
+            spans.forEach((span, idx) => {
+              span.addEventListener("click", (e) => {
+                e.target.classList.add("active");
+              });
+              span.addEventListener("animationend", (e) => {
+                e.target.classList.remove("active");
+              });
+              // Initial animation
+              setTimeout(() => {
+                span.classList.add("active");
+              }, 750 * (idx + 1));
+            });
+          </script>
+          <!-- <div class="img-box">
+            <img src="./Assets/imgs/Profile_square.png" alt="Profile" />
+          </div> -->
+          <div>
+            <span class="wave"></span>
+            <span class="wave"></span>
+            <span class="wave"></span>
+          </div>
         </section>
       </div>
       <!-- HEADER SECTION END -->
